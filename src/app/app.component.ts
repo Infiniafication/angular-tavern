@@ -12,4 +12,5 @@ export class AppComponent  {
   gold = 1000;
   food = 500;
   customerCount = 8; 
+  ap = 10;
 }
