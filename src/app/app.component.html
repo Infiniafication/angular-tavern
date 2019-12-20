@@ -1,0 +1,63 @@
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid">
+
+  <div class="row bg-dark text-white">
+    <h1 class="display-3"> {{ name }} </h1>
+  </div>
+  <div class = "row">
+    <h1 class="display-4"> Day {{day}} </h1>
+  </div>
+
+  <div class="container">
+    <div class="row row-cols-3"> 
+      <div class="col">
+        Gold: {{gold}}
+      </div>
+      <div class="col text-center">
+        Food: {{food}}
+      </div>
+      <div class="col text-right">
+        Customers: {{customerCount}}
+      </div>
+    </div>
+  </div>
+
+  <div class="container bg-light">
+    <div class="row">
+      <div class="col-sm">
+        <h1>Actions</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-primary btn-block">Hunt</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-primary btn-block">Upgrade</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-danger btn-block text-uppercase">End Turn</button>
+      </div>
+    </div>
+
+    &nbsp;
+
+    <div class="row">
+      <div class="col">
+        <p>
+          <samp>
+          {{output}}
+          </samp>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
