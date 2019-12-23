@@ -8,11 +8,6 @@ import { heroClass } from '../hero-class';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit() {
-  }
-
   hero1: Hero = { 
     id: 1, // 1 to 4
     name: "Atlas",
@@ -66,43 +61,51 @@ export class HeroesComponent implements OnInit {
     curFatigue: 0,
   };
 
-  selectClass() {
-    
-  }
+  classes = heroClass;
+  
+  // TODO: Implement selectClass()
+  // selectClass() {
+  //  show list of classes to choose
+  // }
 
-  initHero(id, heroClass, spc, name) {
-    if(id==1)
+  initHero(heroObject, heroClass, spc, name) {
+    if(name)
     {
-      if(name)
-      {
-        this.hero1.name = name;
-      }
-
-      this.hero1.heroClass = heroClass;
-      this.hero1.maxHealth = heroClass.health;
-      this.hero1.maxArcana = heroClass.arcana;
-      this.hero1.maxFatigue = heroClass.fatigue;
-      this.hero1.curHealth = heroClass.health;
-      this.hero1.curArcana = heroClass.arcana;
-      this.hero1.curFatigue = heroClass.fatigue;
-
-      if(spc)
-      {
-        this.hero1.spc = spc;
-        // this.hero1.maxHealth = heroClass.health + heroSpc.health;
-        // this.hero1.maxArcana = heroClass.arcana + heroSpc.arcana;
-        // this.hero1.maxFatigue = heroClass.fatigue + heroSpc.fatigue;
-        // this.hero1.curHealth = heroClass.health + heroSpc.health;
-        // this.hero1.curArcana = heroClass.arcana + heroSpc.arcana;
-        // this.hero1.curFatigue = heroClass.fatigue + heroSpc.fatigue;
-      }
-      else
-      {
-        this.hero1.level = 1;
-      }
-
+      heroObject.name = name;
     }
 
+    heroObject.heroClass = heroClass.name;
+    heroObject.maxHealth = heroClass.health;
+    heroObject.maxArcana = heroClass.arcana;
+    heroObject.maxFatigue = heroClass.fatigue;
+    heroObject.curHealth = heroClass.health;
+    heroObject.curArcana = heroClass.arcana;
+    heroObject.curFatigue = heroClass.fatigue;
+
+    if(spc)
+    {
+      heroObject.spc = spc;
+      // heroObject.maxHealth = heroClass.health + heroSpc.health;
+      // heroObject.maxArcana = heroClass.arcana + heroSpc.arcana;
+      // heroObject.maxFatigue = heroClass.fatigue + heroSpc.fatigue;
+      // heroObject.curHealth = heroClass.health + heroSpc.health;
+      // heroObject.curArcana = heroClass.arcana + heroSpc.arcana;
+      // heroObject.curFatigue = heroClass.fatigue + heroSpc.fatigue;
+    }
+    else
+    {
+      heroObject.level = 1;
+    }
+
+  }
+
+  constructor() { }
+
+  ngOnInit() {
+    // TODO: Implement selectClass() functionality
+    // Static hero init
+    this.initHero(this.hero1,this.classes[0],"",""); // Pass-in Fighter
+    this.initHero(this.hero2,this.classes[2],"",""); // Pass-in Arcanist
   }
 
 }
