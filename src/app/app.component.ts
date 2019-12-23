@@ -7,10 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
   name = 'Black Feather Tavern';
-  day = '21';
+  day = '1';
   output = 'It is a sunny day.';
-  gold = 1000;
-  food = 500;
-  customerCount = 8; 
   ap = 10;
 }

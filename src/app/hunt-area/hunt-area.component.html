@@ -1,0 +1,36 @@
+<div class="container-sm">
+  <div class="row pb-4" *ngFor="let area of areas">
+    <div class="col">
+      <div class="row">
+          <div class="col-md-auto">
+              <h3> {{ area.name }} </h3>
+          </div>
+          <div class="col text-right">
+            <button class = "btn btn-primary" (click)="explore()">
+              Explore
+            </button>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col-sm-auto">
+              <strong> Description: </strong>
+            </div>
+            <div class="col-md-9">
+              {{ area.description }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-auto">
+              <strong> Level range: </strong>
+            </div>
+            <div class="col-md-auto">
+              {{ area.minlevel }} ~ {{ area.maxlevel }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 <head>
+<!-- Import Twitter Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
@@ -11,19 +12,7 @@
     <h1 class="display-4"> Day {{day}} </h1>
   </div>
 
-  <div class="container">
-    <div class="row row-cols-3"> 
-      <div class="col">
-        Gold: {{gold}}
-      </div>
-      <div class="col text-center">
-        Food: {{food}}
-      </div>
-      <div class="col text-right">
-        Customers: {{customerCount}}
-      </div>
-    </div>
-  </div>
+  <app-tavern-stat></app-tavern-stat>
 
   <div class="container bg-light">
     <div class="row">
@@ -45,6 +34,8 @@
     </div>
 
     &nbsp;
+
+  <app-hunt-area></app-hunt-area>
 
     <div class="row">
       <div class="col">
