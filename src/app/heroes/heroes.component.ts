@@ -20,6 +20,7 @@ export class HeroesComponent implements OnInit {
     curHealth: 0,
     curArcana: 0,
     curFatigue: 0,
+    status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
   };
   hero2: Hero = {
     id: 2, // 1 to 4
@@ -33,6 +34,7 @@ export class HeroesComponent implements OnInit {
     curHealth: 0,
     curArcana: 0,
     curFatigue: 0,
+    status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
   };
   hero3: Hero = { 
     id: 3, // 1 to 4
@@ -46,6 +48,7 @@ export class HeroesComponent implements OnInit {
     curHealth: 0,
     curArcana: 0,
     curFatigue: 0,
+    status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
   };
   hero4: Hero = {
     id: 4, // 1 to 4
@@ -59,6 +62,7 @@ export class HeroesComponent implements OnInit {
     curHealth: 0,
     curArcana: 0,
     curFatigue: 0,
+    status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
   };
 
   classes = heroClass;
@@ -68,6 +72,51 @@ export class HeroesComponent implements OnInit {
   //  show list of classes to choose
   // }
 
+  // Determine hero's combat status based on current stats.
+  // Required: heroObject
+  calcStatus(heroObject) {
+    var statusFactor = 0;
+
+    if(heroObject.curHealth == 0)
+    {
+      heroObject.status = "Incapacitated";
+      return;
+    }
+    else if(heroObject.maxArcana > 0)
+    {
+      statusFactor = ( (heroObject.curArcana / heroObject.maxArcana) + (heroObject.curHealth / heroObject.maxHealth) + (1- heroObject.curFatigue / heroObject.maxFatigue) ) / 3;
+    }
+    else
+    {
+      statusFactor = ( (heroObject.curHealth / heroObject.maxHealth) + (1 - heroObject.curFatigue / heroObject.maxFatigue) ) / 2;
+    }
+
+    if (statusFactor >= 0.65) 
+    { 
+      heroObject.status = "Confident";
+      return;
+    }
+    else if(statusFactor >= 0.4) 
+    { 
+      heroObject.status = "Steady";
+      return;
+    }
+    else if(statusFactor > 0) 
+    { 
+      heroObject.status = "Weak";
+      return;
+    }
+    else 
+    { 
+      heroObject.status = "Incapacitated";
+      return;
+    }
+
+  }
+
+  // Initialize hero based on the Class
+  // Required: heroObject, heroClass
+  // Optional: spc, name
   initHero(heroObject, heroClass, spc, name) {
     if(name)
     {
@@ -80,23 +129,25 @@ export class HeroesComponent implements OnInit {
     heroObject.maxFatigue = heroClass.fatigue;
     heroObject.curHealth = heroClass.health;
     heroObject.curArcana = heroClass.arcana;
-    heroObject.curFatigue = heroClass.fatigue;
+    heroObject.curFatigue = 0;
 
     if(spc)
     {
       heroObject.spc = spc;
+      // TODO: Complete Specialization implementation
       // heroObject.maxHealth = heroClass.health + heroSpc.health;
       // heroObject.maxArcana = heroClass.arcana + heroSpc.arcana;
       // heroObject.maxFatigue = heroClass.fatigue + heroSpc.fatigue;
       // heroObject.curHealth = heroClass.health + heroSpc.health;
       // heroObject.curArcana = heroClass.arcana + heroSpc.arcana;
-      // heroObject.curFatigue = heroClass.fatigue + heroSpc.fatigue;
+      // heroObject.curFatigue = 0;
     }
     else
     {
       heroObject.level = 1;
     }
 
+    this.calcStatus(heroObject);
   }
 
   constructor() { }
