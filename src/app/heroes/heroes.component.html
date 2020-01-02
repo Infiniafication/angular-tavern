@@ -3,142 +3,42 @@
       <h4>Party Info</h4>
     </div>
 
-    <!-- Hero 1 -->
-    <div class="pb-2" *ngIf="hero1.level > 0">
-      <div class="row row-cols-2"> 
-        <div class="col-lg-auto">
-          Name: {{hero1.name}}
+    <!-- List all initialized hero information -->
+    <div *ngFor="let hero of heroes">
+      <div class="pb-2" *ngIf="hero.level > 0">
+        <div class="row row-cols-2"> 
+          <div class="col-lg-auto">
+            Name: {{hero.name}}
+          </div>
+          <div class="col-lg-auto">
+            Status: {{hero.status}}
+          </div>
         </div>
-        <div class="col-lg-auto">
-          Status: {{hero1.status}}
+        <div class="row row-cols-3"> 
+          <div class="col-lg-auto">
+            Level: {{hero.level}}
+          </div>
+          <div class="col-lg-auto" >
+            <div *ngIf="hero.level > 0">  Class: {{hero.heroClass}} </div>
+            <!-- TODO: Implement Select Class -->
+            <!-- <button *ngIf="hero.level == 0" (click)="selectClass()"> Select Class </button> -->
+          </div>
+          <div class="col-lg-auto">
+            Specialization: {{hero.spc}}
+          </div>
         </div>
-      </div>
-      <div class="row row-cols-3"> 
-        <div class="col-lg-auto">
-          Level: {{hero1.level}}
-        </div>
-        <div class="col-lg-auto" >
-          <div *ngIf="hero1.level > 0">  Class: {{hero1.heroClass}} </div>
-          <!-- TODO: Implement Select Class -->
-          <!-- <button *ngIf="hero1.level == 0" (click)="selectClass()"> Select Class </button> -->
-        </div>
-        <div class="col-lg-auto">
-          Specialization: {{hero1.spc}}
-        </div>
-      </div>
-      <div class="row row-cols-3"> 
-        <div class="col-lg-auto">
-          Health: {{hero1.curHealth}} / {{hero1.maxHealth}}
-        </div>
-        <div class="col-lg-auto">
-          Fatigue: {{hero1.curFatigue}} / {{hero1.maxFatigue}}
-        </div>
-        <div class="col-lg-auto">
-          Arcana: {{hero1.curArcana}} / {{hero1.maxArcana}}
-        </div>
-      </div>
-    </div>
-
-    <!-- Hero 2 -->
-    <div class="pb-2" *ngIf="hero2.level > 0">
-      <div class="row row-cols-2"> 
-        <div class="col-lg-auto">
-          Name: {{hero2.name}}
-        </div>
-        <div class="col-lg-auto">
-          Status: {{hero2.status}}
-        </div>
-      </div>
-      <div class="row row-cols-3"> 
-        <div class="col-lg-auto">
-          Level: {{hero2.level}}
-        </div>
-        <div class="col-lg-auto">
-          Class: {{hero2.heroClass}}
-        </div>
-        <div class="col-lg-auto">
-          Specialization: {{hero2.spc}}
-        </div>
-      </div>
-      <div class="row row-cols-3"> 
-        <div class="col-lg-auto">
-          Health: {{hero2.curHealth}} / {{hero2.maxHealth}}
-        </div>
-        <div class="col-lg-auto">
-          Fatigue: {{hero2.curFatigue}} / {{hero2.maxFatigue}}
-        </div>
-        <div class="col-lg-auto">
-          Arcana: {{hero2.curArcana}} / {{hero2.maxArcana}}
+        <div class="row row-cols-3"> 
+          <div class="col-lg-auto">
+            Health: {{hero.curHealth}} / {{hero.maxHealth}}
+          </div>
+          <div class="col-lg-auto">
+            Fatigue: {{hero.curFatigue}} / {{hero.maxFatigue}}
+          </div>
+          <div class="col-lg-auto">
+            Arcana: {{hero.curArcana}} / {{hero.maxArcana}}
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Hero 3 -->
-    <div *ngIf="hero3.level > 0">
-      <div class="row row-cols-2"> 
-        <div class="col-lg-auto">
-          Name: {{hero3.name}}
-        </div>
-        <div class="col-lg-auto">
-          Status: {{hero3.status}}
-        </div>
-      </div>
-      <div class="row row-cols-3"> 
-        <div class="col-lg-auto">
-          Level: {{hero3.level}}
-        </div>
-        <div class="col-lg-auto">
-          Class: {{hero3.heroClass}}
-        </div>
-        <div class="col-lg-auto">
-          Specialization: {{hero3.spc}}
-        </div>
-      </div>
-      <div class="row row-cols-3"> 
-        <div class="col-lg-auto">
-          Health: {{hero3.curHealth}} / {{hero3.maxHealth}}
-        </div>
-        <div class="col-lg-auto">
-          Fatigue: {{hero3.curFatigue}} / {{hero3.maxFatigue}}
-        </div>
-        <div class="col-lg-auto">
-          Arcana: {{hero3.curArcana}} / {{hero3.maxArcana}}
-        </div>
-      </div>
-    </div>
-
-    <!-- Hero 4 -->
-    <div *ngIf="hero4.level > 0">
-      <div class="row row-cols-3 pb-2"> 
-        <div class="col-lg-auto">
-          Name: {{hero4.name}}
-        </div>
-        <div class="col-lg-auto">
-          Status: {{hero4.status}}
-        </div>
-      </div>
-      <div class="row row-cols-3"> 
-        <div class="col-lg-auto">
-          Level: {{hero4.level}}
-        </div>
-        <div class="col-lg-auto">
-          Class: {{hero4.heroClass}}
-        </div>
-        <div class="col-lg-auto">
-          Specialization: {{hero4.spc}}
-        </div>
-      </div>
-      <div class="row row-cols-3"> 
-        <div class="col-lg-auto">
-          Health: {{hero4.curHealth}} / {{hero4.maxHealth}}
-        </div>
-        <div class="col-lg-auto">
-          Fatigue: {{hero4.curFatigue}} / {{hero4.maxFatigue}}
-        </div>
-        <div class="col-lg-auto">
-          Arcana: {{hero4.curArcana}} / {{hero4.maxArcana}}
-        </div>
-      </div>
-    </div>
-
-  </div>
+  </div> 

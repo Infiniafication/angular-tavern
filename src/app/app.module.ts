@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { HuntAreaComponent } from './hunt-area/hunt-area.component';
 import { TavernStatComponent } from './tavern-stat/tavern-stat.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { HeroService } from './hero.service';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
   declarations: [ AppComponent, HuntAreaComponent, TavernStatComponent, HeroesComponent ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  providers: [HeroService]
 })
 export class AppModule { }

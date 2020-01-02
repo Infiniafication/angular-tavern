@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { heroClass } from '../hero-class';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -8,62 +9,64 @@ import { heroClass } from '../hero-class';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  hero1: Hero = { 
-    id: 1, // 1 to 4
-    name: "Atlas",
-    level: 0, //1 to 30
-    heroClass: "",
-    spc: "", //Class Specialization
-    maxHealth: 0,
-    maxArcana: 0,
-    maxFatigue: 0,
-    curHealth: 0,
-    curArcana: 0,
-    curFatigue: 0,
-    status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
-  };
-  hero2: Hero = {
-    id: 2, // 1 to 4
-    name: "Milo",
-    level: 0, //1 to 30
-    heroClass: "",
-    spc: "", //Class Specialization
-    maxHealth: 0,
-    maxArcana: 0,
-    maxFatigue: 0,
-    curHealth: 0,
-    curArcana: 0,
-    curFatigue: 0,
-    status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
-  };
-  hero3: Hero = { 
-    id: 3, // 1 to 4
-    name: "",
-    level: 0, //1 to 30
-    heroClass: "",
-    spc: "", //Class Specialization
-    maxHealth: 0,
-    maxArcana: 0,
-    maxFatigue: 0,
-    curHealth: 0,
-    curArcana: 0,
-    curFatigue: 0,
-    status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
-  };
-  hero4: Hero = {
-    id: 4, // 1 to 4
-    name: "",
-    level: 0, //1 to 30
-    heroClass: "",
-    spc: "", //Class Specialization
-    maxHealth: 0,
-    maxArcana: 0,
-    maxFatigue: 0,
-    curHealth: 0,
-    curArcana: 0,
-    curFatigue: 0,
-    status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
-  };
+  heroes: Hero[] = [
+    { 
+      id: 1, // 1 to 4
+      name: "Atlas",
+      level: 0, //1 to 30
+      heroClass: "",
+      spc: "", //Class Specialization
+      maxHealth: 0,
+      maxArcana: 0,
+      maxFatigue: 0,
+      curHealth: 0,
+      curArcana: 0,
+      curFatigue: 0,
+      status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
+    },
+    {
+      id: 2, // 1 to 4
+      name: "Milo",
+      level: 0, //1 to 30
+      heroClass: "",
+      spc: "", //Class Specialization
+      maxHealth: 0,
+      maxArcana: 0,
+      maxFatigue: 0,
+      curHealth: 0,
+      curArcana: 0,
+      curFatigue: 0,
+      status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
+    },
+    { 
+      id: 3, // 1 to 4
+      name: "",
+      level: 0, //1 to 30
+      heroClass: "",
+      spc: "", //Class Specialization
+      maxHealth: 0,
+      maxArcana: 0,
+      maxFatigue: 0,
+      curHealth: 0,
+      curArcana: 0,
+      curFatigue: 0,
+      status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
+    },
+    {
+      id: 4, // 1 to 4
+      name: "",
+      level: 0, //1 to 30
+      heroClass: "",
+      spc: "", //Class Specialization
+      maxHealth: 0,
+      maxArcana: 0,
+      maxFatigue: 0,
+      curHealth: 0,
+      curArcana: 0,
+      curFatigue: 0,
+      status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
+    }
+  ];
 
   classes = heroClass;
   
@@ -155,8 +158,8 @@ export class HeroesComponent implements OnInit {
   ngOnInit() {
     // TODO: Implement selectClass() functionality
     // Static hero init
-    this.initHero(this.hero1,this.classes[0],"",""); // Pass-in Fighter
-    this.initHero(this.hero2,this.classes[2],"",""); // Pass-in Arcanist
+    this.initHero(this.heroes[0],this.classes[0],"",""); // Pass-in Fighter
+    this.initHero(this.heroes[1],this.classes[2],"",""); // Pass-in Arcanist
   }
 
 }

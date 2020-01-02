@@ -10,4 +10,5 @@ export class Hero {
   curHealth: number;
   curArcana: number;
   curFatigue: number;
+  status:string;
 }
