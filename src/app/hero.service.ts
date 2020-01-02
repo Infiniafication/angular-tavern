@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes'; //TODO: Replace this with proper data storage method
 import { heroClass } from './hero-class';
@@ -10,8 +11,8 @@ export class HeroService {
 
   constructor() { }
 
-  getHeroes(): Hero[] {
-    return HEROES;
+  getHeroes(): Observable<Hero[]> {
+    return of(HEROES);
   }
 
   getHeroClasses(): heroClass[] {
@@ -60,7 +61,7 @@ export class HeroService {
 
   }
 
-  // Initialize hero based on the Class
+  // Initialize hero based on the heroClass
   // Required: heroObject, heroClass
   // Optional: spc, name
   initHero(heroObject, heroClass, spc, name) {

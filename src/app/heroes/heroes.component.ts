@@ -25,13 +25,13 @@ export class HeroesComponent implements OnInit {
 
   // Functions
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
+    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
   getHeroClasses(): void {
     this.classes = this.heroService.getHeroClasses();
   }
   
-  // Initialize hero based on the Class
+  // Initialize hero based on the heroClass
   // Required: heroObject, heroClass
   // Optional: spc, name
   initHero(heroObject, heroClass, spc, name): void {
