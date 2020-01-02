@@ -1,0 +1,21 @@
+<div class="container border" *ngIf="messageService.messages.length">
+  <div class="row p-2">
+    <div class="col">
+      <h2>Messages</h2>
+    </div>
+    <div class="col text-right">
+      <button class="clear btn btn-warning" (click)="messageService.clear()">Dismiss</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col ml-3">
+      <div *ngFor='let message of messageService.messages'> 
+        <ul class="list-unstyled">
+          <li>
+            {{message}} 
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

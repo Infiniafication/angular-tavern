@@ -3,15 +3,18 @@ import { Observable, of } from 'rxjs';
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes'; //TODO: Replace this with proper data storage method
 import { heroClass } from './hero-class';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroService {
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
   getHeroes(): Observable<Hero[]> {
+    this.messageService.add('Atlas has joined the party.');
+    this.messageService.add('Milo has joined the party.');
     return of(HEROES);
   }
 
