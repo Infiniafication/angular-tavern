@@ -1,4 +1,4 @@
-export const heroClass = [
+export const HEROCLASS = [
   {
     name: 'Fighter',
     health: 100,

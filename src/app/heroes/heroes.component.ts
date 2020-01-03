@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
-import { heroClass } from '../hero-class';
+import { HEROCLASS } from '../hero-class';
 import { HeroService } from '../hero.service';
 
 @Component({
@@ -19,11 +19,9 @@ export class HeroesComponent implements OnInit {
     this.initHero(this.heroes[1],this.classes[2],"",""); // Pass-in Arcanist Hero Class
   }
 
-  // Variables
   heroes: Hero[]
-  classes : heroClass[];
+  classes;
 
-  // Functions
   getHeroes(): void {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
@@ -31,7 +29,7 @@ export class HeroesComponent implements OnInit {
     this.classes = this.heroService.getHeroClasses();
   }
   
-  // Initialize hero based on the heroClass
+  // Initialize hero based on the HEROCLASS
   // Required: heroObject, heroClass
   // Optional: spc, name
   initHero(heroObject, heroClass, spc, name): void {

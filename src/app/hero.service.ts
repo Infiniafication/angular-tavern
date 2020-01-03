@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes'; //TODO: Replace this with proper data storage method
-import { heroClass } from './hero-class';
+import { HEROCLASS } from './hero-class';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -13,18 +13,16 @@ export class HeroService {
   constructor(private messageService: MessageService) { }
 
   getHeroes(): Observable<Hero[]> {
-    this.messageService.add('Atlas has joined the party.');
-    this.messageService.add('Milo has joined the party.');
     return of(HEROES);
   }
 
   getHeroClasses() {
-    return heroClass;
+    return HEROCLASS;
   }
 
   // Determine hero's combat status based on current stats.
   // Required: heroObject
-  calcStatus(heroObject) {
+  calcStatus(heroObject): void {
     var statusFactor = 0;
 
     if(heroObject.curHealth == 0)
@@ -64,32 +62,32 @@ export class HeroService {
 
   }
 
-  // Initialize hero based on the heroClass
-  // Required: heroObject, heroClass
+  // Initialize hero based on the HEROCLASS
+  // Required: heroObject, HEROCLASS
   // Optional: spc, name
-  initHero(heroObject, heroClass, spc, name) {
+  initHero(heroObject, HEROCLASS, spc, name): void {
     if(name)
     {
       heroObject.name = name;
     }
 
-    heroObject.heroClass = heroClass.name;
-    heroObject.maxHealth = heroClass.health;
-    heroObject.maxArcana = heroClass.arcana;
-    heroObject.maxFatigue = heroClass.fatigue;
-    heroObject.curHealth = heroClass.health;
-    heroObject.curArcana = heroClass.arcana;
+    heroObject.HEROCLASS = HEROCLASS.name;
+    heroObject.maxHealth = HEROCLASS.health;
+    heroObject.maxArcana = HEROCLASS.arcana;
+    heroObject.maxFatigue = HEROCLASS.fatigue;
+    heroObject.curHealth = HEROCLASS.health;
+    heroObject.curArcana = HEROCLASS.arcana;
     heroObject.curFatigue = 0;
 
     if(spc)
     {
       heroObject.spc = spc;
       // TODO: Complete Specialization implementation
-      // heroObject.maxHealth = heroClass.health + heroSpc.health;
-      // heroObject.maxArcana = heroClass.arcana + heroSpc.arcana;
-      // heroObject.maxFatigue = heroClass.fatigue + heroSpc.fatigue;
-      // heroObject.curHealth = heroClass.health + heroSpc.health;
-      // heroObject.curArcana = heroClass.arcana + heroSpc.arcana;
+      // heroObject.maxHealth = HEROCLASS.health + heroSpc.health;
+      // heroObject.maxArcana = HEROCLASS.arcana + heroSpc.arcana;
+      // heroObject.maxFatigue = HEROCLASS.fatigue + heroSpc.fatigue;
+      // heroObject.curHealth = HEROCLASS.health + heroSpc.health;
+      // heroObject.curArcana = HEROCLASS.arcana + heroSpc.arcana;
       // heroObject.curFatigue = 0;
     }
     else
@@ -98,6 +96,7 @@ export class HeroService {
     }
 
     this.calcStatus(heroObject);
+    this.messageService.add(heroObject.name + ' has joined the party.');
   }
   
   // TODO: Implement selectClass()

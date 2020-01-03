@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Tavern } from '../tavern';
+import { TavernService } from '../tavern.service';
 
 @Component({
   selector: 'app-tavern-stat',
@@ -7,26 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TavernStatComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tavernService: TavernService) { }
 
   ngOnInit() {
+    this.getTavernStats();
     this.calculateIncome();
     this.calculateUpkeep();
   }
-  
-  gold = 50;
-  food = 30;
-  popularity = 1;
-  patronWealth = 2;
-  goldIncome = 0;
-  foodUpkeep = 0;
 
-  calculateIncome() {
-    this.goldIncome = this.popularity * this.patronWealth;
+  tavern: Tavern;
+
+  getTavernStats(): void {
+    this.tavernService.getTavernStats().subscribe(tavern => this.tavern = tavern);
   }
 
-  calculateUpkeep() {
-    this.foodUpkeep = this.popularity * (3 * this.patronWealth);
+  calculateIncome(): void {
+    this.tavernService.calculateIncome();
+  }
+
+  calculateUpkeep(): void {
+    this.tavernService.calculateUpkeep();
   }
 
 }

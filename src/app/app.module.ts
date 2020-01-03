@@ -13,6 +13,7 @@ import { MessageService } from './message.service';
 import { ActionsComponent } from './actions/actions.component';
 import { UpgradesComponent } from './upgrades/upgrades.component';
 import { DayEndComponent } from './day-end/day-end.component';
+import { TavernService } from './tavern.service';
 
 @NgModule({
   imports:      [ 
@@ -28,6 +29,6 @@ import { DayEndComponent } from './day-end/day-end.component';
   ],
   declarations: [ AppComponent, HuntAreaComponent, TavernStatComponent, HeroesComponent, MessagesComponent, ActionsComponent, UpgradesComponent, DayEndComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [HeroService, MessageService]
+  providers: [HeroService, MessageService, TavernService]
 })
 export class AppModule { }
