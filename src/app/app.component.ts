@@ -6,8 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  name = 'Black Feather Tavern';
-  day = '1';
-  output = 'It is a sunny day.';
-  ap = 10;
+  name = 'Black Feather Tavern'; // move into Tavern Stat Service
+  day = '1'; // move into Tavern Stat Service
 }

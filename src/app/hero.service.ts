@@ -18,7 +18,7 @@ export class HeroService {
     return of(HEROES);
   }
 
-  getHeroClasses(): heroClass {
+  getHeroClasses() {
     return heroClass;
   }
 
