@@ -14,17 +14,15 @@ export class TavernService {
   getTavernStats(): Observable<Tavern> {
     return of(TAVERNSTATS);
   }
-
-  tavern: Tavern;
   
   // Calculate Tavern Gold Income
   calculateIncome(): void {
-    this.tavern.goldIncome = this.tavern.popularity * this.tavern.patronWealth;
+    Tavern.goldIncome = Tavern.popularity * Tavern.patronWealth;
   }
 
   // Calculate Tavern Food Upkeep
   calculateUpkeep(): void {
-    this.tavern.foodUpkeep = this.tavern.popularity * (3 * this.tavern.patronWealth);
+    Tavern.foodUpkeep = Tavern.popularity * (3 * Tavern.patronWealth);
   }
 
 }
