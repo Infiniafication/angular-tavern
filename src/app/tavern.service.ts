@@ -17,12 +17,12 @@ export class TavernService {
   
   // Calculate Tavern Gold Income
   calculateIncome(): void {
-    Tavern.goldIncome = Tavern.popularity * Tavern.patronWealth;
+    TAVERNSTATS.goldIncome = TAVERNSTATS.popularity * TAVERNSTATS.patronWealth;
   }
 
   // Calculate Tavern Food Upkeep
   calculateUpkeep(): void {
-    Tavern.foodUpkeep = Tavern.popularity * (3 * Tavern.patronWealth);
+    TAVERNSTATS.foodUpkeep = TAVERNSTATS.popularity * (3 * TAVERNSTATS.patronWealth);
   }
 
 }
