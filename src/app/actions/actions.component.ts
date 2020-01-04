@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Tavern } from '../tavern';
+import { TavernService } from '../tavern.service';
 
 @Component({
   selector: 'app-actions',
@@ -7,11 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tavernService: TavernService) { }
 
   ngOnInit() {
+    this.getTavernStats();
   }
 
-  ap = 10; // Move this to Tavern Stat Service
+  tavern: Tavern;
+
+  getTavernStats(): void {
+    this.tavernService.getTavernStats().subscribe(tavern => this.tavern = tavern);
+  }
 
 }
