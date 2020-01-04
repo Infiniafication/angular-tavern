@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
-import { HEROCLASS } from '../hero-class';
+import { HeroClass } from '../hero-class';
 import { HeroService } from '../hero.service';
 
 @Component({
@@ -20,13 +20,13 @@ export class HeroesComponent implements OnInit {
   }
 
   heroes: Hero[]
-  classes;
+  classes: HeroClass[];
 
   getHeroes(): void {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
   getHeroClasses(): void {
-    this.classes = this.heroService.getHeroClasses();
+    this.heroService.getHeroClasses().subscribe(classes => this.classes = classes);
   }
   
   // Initialize hero based on the HEROCLASS

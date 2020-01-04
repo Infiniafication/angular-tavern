@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes'; //TODO: Replace this with proper data storage method
-import { HEROCLASS } from './hero-class';
+import { HeroClass } from './hero-class';
+import { HEROCLASSES } from './mock-hero-classes';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -16,8 +17,8 @@ export class HeroService {
     return of(HEROES);
   }
 
-  getHeroClasses() {
-    return HEROCLASS;
+  getHeroClasses(): Observable<HeroClass[]> {
+    return of(HEROCLASSES);
   }
 
   // Determine hero's combat status based on current stats.
@@ -62,32 +63,32 @@ export class HeroService {
 
   }
 
-  // Initialize hero based on the HEROCLASS
-  // Required: heroObject, HEROCLASS
+  // Initialize hero based on the heroClass
+  // Required: heroObject, heroClass
   // Optional: spc, name
-  initHero(heroObject, HEROCLASS, spc, name): void {
+  initHero(heroObject, heroClass, spc, name): void {
     if(name)
     {
       heroObject.name = name;
     }
 
-    heroObject.HEROCLASS = HEROCLASS.name;
-    heroObject.maxHealth = HEROCLASS.health;
-    heroObject.maxArcana = HEROCLASS.arcana;
-    heroObject.maxFatigue = HEROCLASS.fatigue;
-    heroObject.curHealth = HEROCLASS.health;
-    heroObject.curArcana = HEROCLASS.arcana;
+    heroObject.heroClass = heroClass.name;
+    heroObject.maxHealth = heroClass.health;
+    heroObject.maxArcana = heroClass.arcana;
+    heroObject.maxFatigue = heroClass.fatigue;
+    heroObject.curHealth = heroClass.health;
+    heroObject.curArcana = heroClass.arcana;
     heroObject.curFatigue = 0;
 
     if(spc)
     {
       heroObject.spc = spc;
       // TODO: Complete Specialization implementation
-      // heroObject.maxHealth = HEROCLASS.health + heroSpc.health;
-      // heroObject.maxArcana = HEROCLASS.arcana + heroSpc.arcana;
-      // heroObject.maxFatigue = HEROCLASS.fatigue + heroSpc.fatigue;
-      // heroObject.curHealth = HEROCLASS.health + heroSpc.health;
-      // heroObject.curArcana = HEROCLASS.arcana + heroSpc.arcana;
+      // heroObject.maxHealth = heroClass.health + heroSpc.health;
+      // heroObject.maxArcana = heroClass.arcana + heroSpc.arcana;
+      // heroObject.maxFatigue = heroClass.fatigue + heroSpc.fatigue;
+      // heroObject.curHealth = heroClass.health + heroSpc.health;
+      // heroObject.curArcana = heroClass.arcana + heroSpc.arcana;
       // heroObject.curFatigue = 0;
     }
     else
