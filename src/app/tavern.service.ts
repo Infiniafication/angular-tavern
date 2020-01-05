@@ -25,4 +25,12 @@ export class TavernService {
     TAVERNSTATS.foodUpkeep = TAVERNSTATS.popularity * (3 * TAVERNSTATS.patronWealth); // TODO: refactor
   }
 
+  addFood(food: number): void {
+    TAVERNSTATS.food += food;
+  }
+
+  addActionPoints(AP: number): void {
+    TAVERNSTATS.actionPoints += AP;
+  }
+
 }

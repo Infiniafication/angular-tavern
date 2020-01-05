@@ -15,6 +15,7 @@ import { UpgradesComponent } from './upgrades/upgrades.component';
 import { DayEndComponent } from './day-end/day-end.component';
 import { TavernService } from './tavern.service';
 import { HuntService } from './hunt.service';
+import { HuntDetailsComponent } from './hunt-details/hunt-details.component';
 
 @NgModule({
   imports:      [ 
@@ -24,11 +25,12 @@ import { HuntService } from './hunt.service';
       { path: 'tavern', component: TavernStatComponent },
       { path: 'party', component: HeroesComponent },
       { path: 'hunt', component: HuntAreaComponent },
+      { path: 'hunt/:id', component: HuntDetailsComponent },
       { path: 'upgrade', component: UpgradesComponent },
       { path: 'end', component: DayEndComponent },
     ])
   ],
-  declarations: [ AppComponent, HuntAreaComponent, TavernStatComponent, HeroesComponent, MessagesComponent, ActionsComponent, UpgradesComponent, DayEndComponent ],
+  declarations: [ AppComponent, HuntAreaComponent, TavernStatComponent, HeroesComponent, MessagesComponent, ActionsComponent, UpgradesComponent, DayEndComponent, HuntDetailsComponent ],
   bootstrap:    [ AppComponent ],
   providers: [HeroService, MessageService, TavernService, HuntService]
 })

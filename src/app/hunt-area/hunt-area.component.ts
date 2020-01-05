@@ -21,8 +21,5 @@ export class HuntAreaComponent implements OnInit {
     this.huntService.getAreas().subscribe(areas => this.areas = areas);
   }
 
-  explore() {
-    // some stats calculation
-    // some rewards calculation
-  }
+
 }
