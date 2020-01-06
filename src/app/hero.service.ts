@@ -102,9 +102,9 @@ export class HeroService {
 
   addStats(id, health, fatigue, arcana) { //TODO: Add EXP
     // TODO: Refactor?
-    HEROES[id].health += health;
-    HEROES[id].fatigue += health;
-    HEROES[id].arcana += health;
+    HEROES[id].curHealth += health;
+    HEROES[id].curFatigue += fatigue;
+    HEROES[id].curArcana += arcana;
   }
   
   // TODO: Implement selectClass()
