@@ -99,6 +99,13 @@ export class HeroService {
     this.calcStatus(heroObject);
     this.messageService.add(heroObject.name + ' has joined the party.');
   }
+
+  addStats(id, health, fatigue, arcana) { //TODO: Add EXP
+    // TODO: Refactor?
+    HEROES[id].health += health;
+    HEROES[id].fatigue += health;
+    HEROES[id].arcana += health;
+  }
   
   // TODO: Implement selectClass()
   // selectClass() {

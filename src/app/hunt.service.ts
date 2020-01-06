@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Area } from './area';
 import { AREAS } from './mock-areas';
 import { TavernService } from './tavern.service';
+import { HeroService } from './hero.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,10 @@ import { TavernService } from './tavern.service';
 
 export class HuntService {
 
-  constructor(private tavernService: TavernService) { }
+  constructor(
+    private tavernService: TavernService,
+    private heroService: HeroService
+  ) { }
 
   getAreas(): Observable<Area[]> {
     return of(AREAS);
