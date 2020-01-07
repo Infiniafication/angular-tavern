@@ -1,13 +1,32 @@
 <div class="container-sm">
   <div class="row pb-4">
     <div class="col">
-      <h3>Exploration Summary</h3>
-      <p>
-        Some reward obtained.
-        Hero EXP gained.
-        Hero lost health and arcana. Hero gained fatigue.
-        Action Points spent.
-      </p>
+      <div class="row"><h3>Exploration Summary</h3></div>
+      <div class="row">
+        Food gained: {{foodReward}}
+      </div>
+      <div *ngFor="let stat of stats; index as i">
+        <div class="row">
+          <div class="col">
+            Hero: {{hero[i].name}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Health - {{stat[0]}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Fatigue + {{stat[1]}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Arcana - {{stat[2]}}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

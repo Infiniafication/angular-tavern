@@ -16,13 +16,36 @@ export class HuntService {
     private heroService: HeroService
   ) { }
 
+  // 2D array to store exploration stats outcome for each active hero
+  // stats[HeroID][Health, Fatigue, Arcana]
+  stats: number[]; 
+  foodReward: number;
+
   getAreas(): Observable<Area[]> {
     return of(AREAS);
   }
 
+  getStats() {
+    return this.stats;
+  }
+
+  getFoodReward(): Observable<number> {
+    return of(this.foodReward);
+  }
+
   explore(idArea): void {
+    this.stats = [0];
+    var heroCount = 0;
+    heroCount = this.heroService.getActiveHeroes(); // Get number of active & healthy heroes
+    for(var counter:number = 0; counter<heroCount; counter++)
+    {
+      // Do some stats calculation based on active heroes and area difficulty
+      this.heroService.battle(counter, AREAS[idArea].actionpoints);
+      //this.stats.push(this.heroService.battle(counter, AREAS[idArea].actionpoints));
+    }
     this.tavernService.addActionPoints(-(AREAS[idArea].actionpoints)); // Deduct AP
-    this.tavernService.addFood(this.getRandomInt(AREAS[idArea].actionpoints * 2)); // Add Food Reward
+    this.foodReward = this.getRandomInt(AREAS[idArea].actionpoints * 2) // Assuming food is 2x the AP cost
+    this.tavernService.addFood(this.foodReward); // Food Reward
   }
 
   // Returns a random integer with max value as param.

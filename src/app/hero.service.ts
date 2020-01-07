@@ -21,6 +21,16 @@ export class HeroService {
     return of(HEROCLASSES);
   }
 
+  getActiveHeroes(): number {
+    var count = 0;
+    for (let hero of HEROES) 
+    {
+      if(hero.level>0 && hero.curHealth>0)
+        count++;
+    }
+    return count;
+  }
+
   // Determine hero's combat status based on current stats.
   // Required: heroObject
   calcStatus(heroObject): void {
@@ -100,16 +110,85 @@ export class HeroService {
     this.messageService.add(heroObject.name + ' has joined the party.');
   }
 
-  addStats(id, health, fatigue, arcana) { //TODO: Add EXP
+  // Calculates battle outcome based on difficulty
+  battle(id: number, difficulty: number): number[] {
+    var healthMultiplier: number;
+    var fatigueMultiplier: number;
+    var arcanaMultiplier: number;
+    var stats: number[];
+
+    // TODO: Refactor
+    // Difficulty details should be stored as data and imported but will be hardcoded for now.
+    // Current difficulty is determined by Action Points (less AP = easier).
+    if(difficulty <= 2) // easy difficulty
+    {
+      if(HEROES[id].maxArcana>0) // different calculation for arcana heroes
+      {
+        healthMultiplier = 2;
+        fatigueMultiplier = 3;
+        arcanaMultiplier = 6;
+      }
+      else
+      {
+        healthMultiplier = 6;
+        fatigueMultiplier = 5;
+        arcanaMultiplier = 0;
+      }
+    }
+    else if(difficulty > 2 && difficulty <= 5) // average difficulty
+    {
+      if(HEROES[id].maxArcana>0) // different calculation for arcana heroes
+      {
+        healthMultiplier = 4;
+        fatigueMultiplier = 5;
+        arcanaMultiplier = 11;
+      }
+      else
+      {
+        healthMultiplier = 11;
+        fatigueMultiplier = 8;
+        arcanaMultiplier = 0;
+      }
+    }
+    else if(difficulty >=5) // hard difficulty
+    {
+      if(HEROES[id].maxArcana>0) // different calculation for arcana heroes
+      {
+        healthMultiplier = 8;
+        fatigueMultiplier = 15;
+        arcanaMultiplier = 22;
+      }
+      else
+      {
+        healthMultiplier = 18;
+        fatigueMultiplier = 27;
+        arcanaMultiplier = 0;
+      }
+    }
+
+    stats = this.addStats(id, -this.getRandomInt(healthMultiplier), fatigueMultiplier, -this.getRandomInt(arcanaMultiplier));
+
+    return stats;
+  }
+
+  // Add stats based on parameters and returns the values of [Health, Fatigue, Arcana]
+  addStats(id: number, health: number, fatigue: number, arcana: number): number[] { //TODO: Add EXP
     // TODO: Refactor?
     HEROES[id].curHealth += health;
     HEROES[id].curFatigue += fatigue;
     HEROES[id].curArcana += arcana;
+
+    return [health, fatigue, arcana];
   }
   
   // TODO: Implement selectClass()
   // selectClass() {
   //  show list of classes to choose
   // }
+
+  // Returns a random integer with max value as param.
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
 
 }
