@@ -25,7 +25,7 @@ export class HeroService {
     var count = 0;
     for (let hero of HEROES) 
     {
-      if(hero.level>0 && hero.curHealth>0)
+      if(hero.level>0 && hero.curHealth>0) // TODO: Fix bug with 0 Health hero in relation to hero array ID
         count++;
     }
     return count;
