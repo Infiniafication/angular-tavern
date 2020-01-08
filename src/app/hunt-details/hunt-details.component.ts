@@ -48,7 +48,9 @@ export class HuntDetailsComponent implements OnInit {
   }
   explore(): void {
     this.id = +this.route.snapshot.paramMap.get('id');
-    this.huntService.explore(this.id);
-    this.getFoodReward();
+    if(this.huntService.explore(this.id))
+      this.getFoodReward();
+    else
+      this.foodReward = -1; // Negative value indicates failure
   }
 }

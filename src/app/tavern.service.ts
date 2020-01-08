@@ -29,8 +29,12 @@ export class TavernService {
     TAVERNSTATS.food += food;
   }
 
-  addActionPoints(AP: number): void {
+  addActionPoints(AP: number): boolean {
+    if(TAVERNSTATS.actionPoints + AP < 0)
+      return false;
+    
     TAVERNSTATS.actionPoints += AP;
+    return true;
   }
 
 }

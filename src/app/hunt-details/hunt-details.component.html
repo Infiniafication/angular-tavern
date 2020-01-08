@@ -1,6 +1,6 @@
 <div class="container-sm">
   <div class="row pb-4">
-    <div class="col">
+    <div class="col" *ngIf="foodReward>=0">
       <div class="row"><h3>Exploration Summary</h3></div>
       <div class="row">
         Food gained: {{foodReward}}
@@ -27,6 +27,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="col" *ngIf="foodReward<0">
+      <div class="row"> You are unable to explore anymore. You should end the day.</div>
     </div>
   </div>
 </div>

@@ -33,19 +33,30 @@ export class HuntService {
     return of(this.foodReward);
   }
 
-  explore(idArea): void {
+  explore(idArea): boolean {
+    var valid: boolean = false;
     // this.stats = [0];
     var heroCount = 0;
     heroCount = this.heroService.getActiveHeroes(); // Get number of active & healthy heroes
-    for(var counter:number = 0; counter<heroCount; counter++)
-    {
-      // Do some stats calculation based on active heroes and area difficulty
-      this.heroService.battle(counter, AREAS[idArea].actionpoints);
-      //this.stats.push(this.heroService.battle(counter, AREAS[idArea].actionpoints));
+    
+    valid = this.tavernService.addActionPoints(-(AREAS[idArea].actionpoints)); // Deduct AP
+    
+    valid = valid && (heroCount>0); // If either is false, return false
+
+    if(valid)
+    { 
+      for(var counter:number = 0; counter<heroCount; counter++)
+      {
+        // Do some stats calculation based on active heroes and area difficulty
+        this.heroService.battle(counter, AREAS[idArea].actionpoints);
+        //this.stats.push(this.heroService.battle(counter, AREAS[idArea].actionpoints));
+      }
+      
+      this.foodReward = this.getRandomInt(AREAS[idArea].actionpoints * 2) // Assuming food is 2x the AP cost
+      this.tavernService.addFood(this.foodReward); // Food Reward
     }
-    this.tavernService.addActionPoints(-(AREAS[idArea].actionpoints)); // Deduct AP
-    this.foodReward = this.getRandomInt(AREAS[idArea].actionpoints * 2) // Assuming food is 2x the AP cost
-    this.tavernService.addFood(this.foodReward); // Food Reward
+
+    return valid;
   }
 
   // Returns a random integer with max value as param.
