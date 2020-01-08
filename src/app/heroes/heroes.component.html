@@ -1,4 +1,4 @@
-  <div class="container pb-4">
+  <div class="container-fluid pb-4">
     <div class="row">
       <h4>Party Info</h4>
     </div>
@@ -7,34 +7,34 @@
     <div *ngFor="let hero of heroes">
       <div class="pb-2" *ngIf="hero.level > 0">
         <div class="row row-cols-2"> 
-          <div class="col-lg-auto">
+          <div class="col">
             Name: {{hero.name}}
           </div>
-          <div class="col-lg-auto">
+          <div class="col">
             Status: {{hero.status}}
           </div>
         </div>
         <div class="row row-cols-3"> 
-          <div class="col-lg-auto">
+          <div class="col">
             Level: {{hero.level}}
           </div>
-          <div class="col-lg-auto" >
+          <div class="col" >
             <div *ngIf="hero.level > 0">  Class: {{hero.heroClass}} </div>
             <!-- TODO: Implement Select Class -->
             <!-- <button *ngIf="hero.level == 0" (click)="selectClass()"> Select Class </button> -->
           </div>
-          <div class="col-lg-auto">
+          <div class="col">
             Specialization: {{hero.spc}}
           </div>
         </div>
         <div class="row row-cols-3"> 
-          <div class="col-lg-auto">
+          <div class="col">
             Health: {{hero.curHealth}} / {{hero.maxHealth}}
           </div>
-          <div class="col-lg-auto">
+          <div class="col">
             Fatigue: {{hero.curFatigue}} / {{hero.maxFatigue}}
           </div>
-          <div class="col-lg-auto">
+          <div class="col">
             Arcana: {{hero.curArcana}} / {{hero.maxArcana}}
           </div>
         </div>
