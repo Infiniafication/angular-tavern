@@ -24,22 +24,22 @@ export class HuntDetailsComponent implements OnInit {
   ngOnInit() {
     this.getAreas();
     this.explore();
-    this.stats = this.getStats();
+    //this.stats = this.getStats();
     this.getHeroes();
   }
   
   areas: Area[];
   id: number;
-  stats: number[]; 
+  // stats: number[]; 
   foodReward: number;
   heroes: Hero[];
 
   getAreas(): void {
     this.huntService.getAreas().subscribe(areas => this.areas = areas);
   }
-  getStats() {
-    return this.huntService.getStats();
-  }
+  // getStats() {
+  //   return this.huntService.getStats();
+  // }
   getFoodReward() {
     this.huntService.getFoodReward().subscribe(foodReward => this.foodReward = foodReward);
   }

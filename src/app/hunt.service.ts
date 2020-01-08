@@ -18,23 +18,23 @@ export class HuntService {
 
   // 2D array to store exploration stats outcome for each active hero
   // stats[HeroID][Health, Fatigue, Arcana]
-  stats: number[]; 
+  // stats: number[]; 
   foodReward: number;
 
   getAreas(): Observable<Area[]> {
     return of(AREAS);
   }
 
-  getStats() {
-    return this.stats;
-  }
+  // getStats() {
+  //   return this.stats;
+  // }
 
   getFoodReward(): Observable<number> {
     return of(this.foodReward);
   }
 
   explore(idArea): void {
-    this.stats = [0];
+    // this.stats = [0];
     var heroCount = 0;
     heroCount = this.heroService.getActiveHeroes(); // Get number of active & healthy heroes
     for(var counter:number = 0; counter<heroCount; counter++)

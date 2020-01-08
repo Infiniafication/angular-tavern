@@ -124,14 +124,14 @@ export class HeroService {
     {
       if(HEROES[id].maxArcana>0) // different calculation for arcana heroes
       {
-        healthMultiplier = 2;
-        fatigueMultiplier = 3;
-        arcanaMultiplier = 6;
+        healthMultiplier = 8;
+        fatigueMultiplier = 5;
+        arcanaMultiplier = 17;
       }
       else
       {
-        healthMultiplier = 6;
-        fatigueMultiplier = 5;
+        healthMultiplier = 30;
+        fatigueMultiplier = 25;
         arcanaMultiplier = 0;
       }
     }
@@ -139,14 +139,14 @@ export class HeroService {
     {
       if(HEROES[id].maxArcana>0) // different calculation for arcana heroes
       {
-        healthMultiplier = 4;
-        fatigueMultiplier = 5;
-        arcanaMultiplier = 11;
+        healthMultiplier = 18;
+        fatigueMultiplier = 14;
+        arcanaMultiplier = 33;
       }
       else
       {
-        healthMultiplier = 11;
-        fatigueMultiplier = 8;
+        healthMultiplier = 35;
+        fatigueMultiplier = 30;
         arcanaMultiplier = 0;
       }
     }
@@ -154,14 +154,14 @@ export class HeroService {
     {
       if(HEROES[id].maxArcana>0) // different calculation for arcana heroes
       {
-        healthMultiplier = 8;
-        fatigueMultiplier = 15;
-        arcanaMultiplier = 22;
+        healthMultiplier = 30;
+        fatigueMultiplier = 25;
+        arcanaMultiplier = 45;
       }
       else
       {
-        healthMultiplier = 18;
-        fatigueMultiplier = 27;
+        healthMultiplier = 45;
+        fatigueMultiplier = 55;
         arcanaMultiplier = 0;
       }
     }
@@ -178,6 +178,26 @@ export class HeroService {
     HEROES[id].curFatigue += fatigue;
     HEROES[id].curArcana += arcana;
 
+    // Ensure stats are within valid range
+    if(HEROES[id].curHealth > HEROES[id].maxHealth)
+      HEROES[id].curHealth = HEROES[id].maxHealth;
+
+    if(HEROES[id].curFatigue > HEROES[id].maxFatigue)
+      HEROES[id].curFatigue = HEROES[id].maxFatigue;
+    
+    if(HEROES[id].curArcana > HEROES[id].maxArcana)
+      HEROES[id].curArcana = HEROES[id].maxArcana;
+
+    if(HEROES[id].curHealth < 0)
+      HEROES[id].curHealth = 0;
+
+    if(HEROES[id].curFatigue < 0)
+      HEROES[id].curFatigue = 0;
+    
+    if(HEROES[id].curArcana < 0)
+      HEROES[id].curArcana = 0;
+    
+    this.calcStatus(HEROES[id]);
     return [health, fatigue, arcana];
   }
   
