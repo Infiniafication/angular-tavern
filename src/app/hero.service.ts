@@ -5,6 +5,7 @@ import { HEROES } from './mock-heroes'; //TODO: Replace this with proper data st
 import { HeroClass } from './hero-class';
 import { HEROCLASSES } from './mock-hero-classes';
 import { MessageService } from './message.service';
+import { Stats } from './stats';
 
 @Injectable({
   providedIn: 'root',
@@ -111,11 +112,11 @@ export class HeroService {
   }
 
   // Calculates battle outcome based on difficulty
-  battle(id: number, difficulty: number): number[] {
+  battle(id: number, difficulty: number): Stats {
     var healthMultiplier: number;
     var fatigueMultiplier: number;
     var arcanaMultiplier: number;
-    var stats: number[];
+    var stats: Stats = { health: 0, fatigue: 0, arcana: 0 };
 
     // TODO: Refactor
     // Difficulty details should be stored as data and imported but will be hardcoded for now.
@@ -166,17 +167,20 @@ export class HeroService {
       }
     }
 
-    stats = this.addStats(id, -this.getRandomInt(healthMultiplier), fatigueMultiplier, -this.getRandomInt(arcanaMultiplier));
-
+    stats.health = -this.getRandomInt(healthMultiplier);
+    stats.fatigue = fatigueMultiplier;
+    stats.arcana = -this.getRandomInt(arcanaMultiplier);
+    this.addStats(id, stats);
+    
     return stats;
   }
 
   // Add stats based on parameters and returns the values of [Health, Fatigue, Arcana]
-  addStats(id: number, health: number, fatigue: number, arcana: number): number[] { //TODO: Add EXP
+  addStats(id: number, stats: Stats): void { //TODO: Add EXP
     // TODO: Refactor?
-    HEROES[id].curHealth += health;
-    HEROES[id].curFatigue += fatigue;
-    HEROES[id].curArcana += arcana;
+    HEROES[id].curHealth += stats.health;
+    HEROES[id].curFatigue += stats.fatigue;
+    HEROES[id].curArcana += stats.arcana;
 
     // Ensure stats are within valid range
     if(HEROES[id].curHealth > HEROES[id].maxHealth)
@@ -198,7 +202,7 @@ export class HeroService {
       HEROES[id].curArcana = 0;
     
     this.calcStatus(HEROES[id]);
-    return [health, fatigue, arcana];
+
   }
   
   // TODO: Implement selectClass()

@@ -5,7 +5,7 @@ import { Area } from '../area';
 import { HuntService } from '../hunt.service';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
-
+import { Stats } from '../stats';
 
 @Component({
   selector: 'app-hunt-details',
@@ -24,22 +24,22 @@ export class HuntDetailsComponent implements OnInit {
   ngOnInit() {
     this.getAreas();
     this.explore();
-    //this.stats = this.getStats();
+    this.stats = this.getStats();
     this.getHeroes();
   }
   
   areas: Area[];
   id: number;
-  // stats: number[]; 
+  stats: Stats[]; 
   foodReward: number;
   heroes: Hero[];
 
   getAreas(): void {
     this.huntService.getAreas().subscribe(areas => this.areas = areas);
   }
-  // getStats() {
-  //   return this.huntService.getStats();
-  // }
+  getStats(): Stats[] {
+    return this.huntService.getStats();
+  }
   getFoodReward() {
     this.huntService.getFoodReward().subscribe(foodReward => this.foodReward = foodReward);
   }

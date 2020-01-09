@@ -4,6 +4,7 @@ import { Area } from './area';
 import { AREAS } from './mock-areas';
 import { TavernService } from './tavern.service';
 import { HeroService } from './hero.service';
+import { Stats } from './stats';
 
 @Injectable({
   providedIn: 'root',
@@ -18,16 +19,16 @@ export class HuntService {
 
   // 2D array to store exploration stats outcome for each active hero
   // stats[HeroID][Health, Fatigue, Arcana]
-  // stats: number[]; 
+  partyStats: Stats[]; 
   foodReward: number;
 
   getAreas(): Observable<Area[]> {
     return of(AREAS);
   }
 
-  // getStats() {
-  //   return this.stats;
-  // }
+  getStats(): Stats[] {
+    return this.partyStats;
+  }
 
   getFoodReward(): Observable<number> {
     return of(this.foodReward);
@@ -35,12 +36,9 @@ export class HuntService {
 
   explore(idArea): boolean {
     var valid: boolean = false;
-    // this.stats = [0];
-    var heroCount = 0;
-    heroCount = this.heroService.getActiveHeroes(); // Get number of active & healthy heroes
-    
+    this.partyStats = [];
+    var heroCount: number = this.heroService.getActiveHeroes(); // Get number of active & healthy heroes
     valid = this.tavernService.addActionPoints(-(AREAS[idArea].actionpoints)); // Deduct AP
-    
     valid = valid && (heroCount>0); // If either is false, return false
 
     if(valid)
@@ -48,8 +46,8 @@ export class HuntService {
       for(var counter:number = 0; counter<heroCount; counter++)
       {
         // Do some stats calculation based on active heroes and area difficulty
-        this.heroService.battle(counter, AREAS[idArea].actionpoints);
-        //this.stats.push(this.heroService.battle(counter, AREAS[idArea].actionpoints));
+        // this.heroService.battle(counter, AREAS[idArea].actionpoints);
+        this.partyStats.push(this.heroService.battle(counter, AREAS[idArea].actionpoints));
       }
       
       this.foodReward = this.getRandomInt(AREAS[idArea].actionpoints * 2) // Assuming food is 2x the AP cost
