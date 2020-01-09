@@ -87,9 +87,11 @@ export class HeroService {
     heroObject.maxHealth = heroClass.health;
     heroObject.maxArcana = heroClass.arcana;
     heroObject.maxFatigue = heroClass.fatigue;
+    heroObject.maxExp = 100;
     heroObject.curHealth = heroClass.health;
     heroObject.curArcana = heroClass.arcana;
     heroObject.curFatigue = 0;
+    heroObject.curExp = 0;
 
     if(spc)
     {

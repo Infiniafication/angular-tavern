@@ -6,17 +6,20 @@
     <!-- List all initialized hero information -->
     <div *ngFor="let hero of heroes">
       <div class="pb-2" *ngIf="hero.level > 0">
-        <div class="row row-cols-2"> 
+        <div class="row row-cols-3"> 
           <div class="col">
             Name: {{hero.name}}
           </div>
           <div class="col">
-            Status: {{hero.status}}
+            Level: {{hero.level}}
+          </div>
+          <div class="col">
+            EXP: {{hero.curExp}} / {{hero.maxExp}}
           </div>
         </div>
         <div class="row row-cols-3"> 
           <div class="col">
-            Level: {{hero.level}}
+            Status: {{hero.status}}
           </div>
           <div class="col" >
             <div *ngIf="hero.level > 0">  Class: {{hero.heroClass}} </div>
