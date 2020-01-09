@@ -1,11 +1,11 @@
-  <div class="container-fluid pb-4">
-    <div class="row">
+  <div class="container-fluid card">
+    <div class="row card-header">
       <h4>Party Info</h4>
     </div>
 
     <!-- List all initialized hero information -->
     <div *ngFor="let hero of heroes">
-      <div class="pb-2" *ngIf="hero.level > 0">
+      <div class="card-body card-text" *ngIf="hero.level > 0">
         <div class="row row-cols-3"> 
           <div class="col">
             Name: {{hero.name}}

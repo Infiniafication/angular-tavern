@@ -1,7 +1,7 @@
 <div class="container-sm">
-  <div class="row pb-4" *ngFor="let area of areas">
+  <div class="row card" *ngFor="let area of areas">
     <div class="col">
-      <div class="row">
+      <div class="row card-header">
           <div class="col-md-auto col-sm-6">
               <h3> {{ area.name }} </h3>
           </div>
@@ -11,7 +11,7 @@
             </button>
           </div>
       </div>
-      <div class="row">
+      <div class="row card-body card-text">
         <div class="col">
           <div class="row">
             <div class="col-sm-auto">
