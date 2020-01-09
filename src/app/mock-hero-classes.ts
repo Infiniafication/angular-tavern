@@ -17,9 +17,9 @@ export const HEROCLASSES: HeroClass[] = [
   },
   {
     name: 'Arcanist',
-    health: 20,
+    health: 40,
     fatigue: 30,
-    arcana: 100,
+    arcana: 80,
     description: 'Health: * | Fatigue: * | Arcana: ****'
   }
 ];
