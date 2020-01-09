@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DayService } from '../day.service';
 
 @Component({
   selector: 'app-day-end',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DayEndComponent implements OnInit {
 
-  constructor() { }
+  constructor( private dayService: DayService ) { }
 
   ngOnInit() {
+    this.dayService.endDay();
   }
 
 }

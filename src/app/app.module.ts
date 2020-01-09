@@ -16,6 +16,8 @@ import { DayEndComponent } from './day-end/day-end.component';
 import { TavernService } from './tavern.service';
 import { HuntService } from './hunt.service';
 import { HuntDetailsComponent } from './hunt-details/hunt-details.component';
+import { BannerComponent } from './banner/banner.component';
+import { DayService } from './day.service';
 
 @NgModule({
   imports:      [ 
@@ -30,8 +32,8 @@ import { HuntDetailsComponent } from './hunt-details/hunt-details.component';
       { path: 'end', component: DayEndComponent },
     ])
   ],
-  declarations: [ AppComponent, HuntAreaComponent, TavernStatComponent, HeroesComponent, MessagesComponent, ActionsComponent, UpgradesComponent, DayEndComponent, HuntDetailsComponent ],
+  declarations: [ AppComponent, HuntAreaComponent, TavernStatComponent, HeroesComponent, MessagesComponent, ActionsComponent, UpgradesComponent, DayEndComponent, HuntDetailsComponent, BannerComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [HeroService, MessageService, TavernService, HuntService]
+  providers: [HeroService, MessageService, TavernService, HuntService, DayService]
 })
 export class AppModule { }

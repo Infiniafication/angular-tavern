@@ -25,6 +25,18 @@ export class TavernService {
     TAVERNSTATS.foodUpkeep = TAVERNSTATS.popularity * (3 * TAVERNSTATS.patronWealth); // TODO: refactor
   }
 
+  incomeTick(): void {
+    this.addGold(TAVERNSTATS.goldIncome);
+  }
+
+  foodUpkeepTick(): void {
+    this.addFood(-TAVERNSTATS.foodUpkeep);
+  }
+
+  addGold(gold: number): void {
+    TAVERNSTATS.gold += gold;
+  }
+
   addFood(food: number): void {
     TAVERNSTATS.food += food;
   }
@@ -35,6 +47,10 @@ export class TavernService {
     
     TAVERNSTATS.actionPoints += AP;
     return true;
+  }
+
+  refreshActionPoints(): void {
+    TAVERNSTATS.actionPoints = 10; // TODO: Move this into data storage
   }
 
 }
