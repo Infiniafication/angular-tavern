@@ -87,7 +87,7 @@ export class HeroService {
     heroObject.maxHealth = heroClass.health;
     heroObject.maxArcana = heroClass.arcana;
     heroObject.maxFatigue = heroClass.fatigue;
-    heroObject.maxExp = 100;
+    heroObject.maxExp = 10;
     heroObject.curHealth = heroClass.health;
     heroObject.curArcana = heroClass.arcana;
     heroObject.curFatigue = 0;
@@ -214,10 +214,26 @@ export class HeroService {
 
   // Hero level-up with HeroObject as required parameter.
   levelUp(heroObject: Hero): boolean {
-    heroObject.level++;
-    heroObject.curExp = 0;
-    heroObject.maxExp *= 1.2; // Hardcode maxExp multiplier to 1.2
-    return true;
+    for(let heroClass of HEROCLASSES)
+    {
+      if (heroClass.name == heroObject.heroClass)
+      {
+        heroObject.level++;
+        heroObject.curExp = 0;
+        heroObject.maxExp = Math.ceil(heroObject.maxExp * 1.2); // Hardcode maxExp multiplier to 1.2
+        heroObject.maxHealth = Math.ceil(heroObject.maxHealth * heroClass.healthMultiplier);
+        heroObject.maxFatigue = Math.ceil(heroObject.maxFatigue * heroClass.fatigueMultiplier);
+        heroObject.maxArcana = Math.ceil(heroObject.maxArcana * heroClass.arcanaMultiplier);
+        heroObject.curHealth = heroObject.maxHealth;
+        heroObject.curFatigue = heroObject.maxFatigue;
+        heroObject.curArcana = heroObject.maxArcana;
+
+        this.messageService.add('Congratulations, ' + heroObject.name + ' has leveled up to Level ' + heroObject.level + '!');
+        return true;
+      }
+    }
+
+    return false;
   }
   
   // TODO: Implement selectClass()

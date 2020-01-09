@@ -7,10 +7,10 @@ export class Hero {
   maxHealth: number;
   maxArcana: number;
   maxFatigue: number;
+  maxExp: number;
   curHealth: number;
   curArcana: number;
   curFatigue: number;
-  maxExp: number;
   curExp: number;
   status:string;
 }

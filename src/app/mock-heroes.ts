@@ -10,9 +10,11 @@ export const HEROES: Hero[] = [
     maxHealth: 0,
     maxArcana: 0,
     maxFatigue: 0,
+    maxExp: 0,
     curHealth: 0,
     curArcana: 0,
     curFatigue: 0,
+    curExp: 0,
     status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
   },
   {
@@ -24,9 +26,11 @@ export const HEROES: Hero[] = [
     maxHealth: 0,
     maxArcana: 0,
     maxFatigue: 0,
+    maxExp: 0,
     curHealth: 0,
     curArcana: 0,
     curFatigue: 0,
+    curExp: 0,
     status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
   },
   { 
@@ -38,9 +42,11 @@ export const HEROES: Hero[] = [
     maxHealth: 0,
     maxArcana: 0,
     maxFatigue: 0,
+    maxExp: 0,
     curHealth: 0,
     curArcana: 0,
     curFatigue: 0,
+    curExp: 0,
     status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
   },
   {
@@ -52,9 +58,11 @@ export const HEROES: Hero[] = [
     maxHealth: 0,
     maxArcana: 0,
     maxFatigue: 0,
+    maxExp: 0,
     curHealth: 0,
     curArcana: 0,
     curFatigue: 0,
+    curExp: 0,
     status: "Incapacitated", // Incapacitated, Weak, Steady, Confident
   }
 ];

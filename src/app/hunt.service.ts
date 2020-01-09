@@ -17,8 +17,6 @@ export class HuntService {
     private heroService: HeroService
   ) { }
 
-  // 2D array to store exploration stats outcome for each active hero
-  // stats[HeroID][Health, Fatigue, Arcana]
   partyStats: Stats[]; 
   foodReward: number;
 
@@ -46,7 +44,6 @@ export class HuntService {
       for(var counter:number = 0; counter<heroCount; counter++)
       {
         // Do some stats calculation based on active heroes and area difficulty
-        // this.heroService.battle(counter, AREAS[idArea].actionpoints);
         this.partyStats.push(this.heroService.battle(counter, AREAS[idArea].actionpoints));
       }
       
