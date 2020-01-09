@@ -34,7 +34,7 @@ export class HeroService {
 
   // Determine hero's combat status based on current stats.
   // Required: heroObject
-  calcStatus(heroObject): void {
+  calcStatus(heroObject: Hero): void {
     var statusFactor = 0;
 
     if(heroObject.curHealth == 0)
@@ -77,7 +77,7 @@ export class HeroService {
   // Initialize hero based on the heroClass
   // Required: heroObject, heroClass
   // Optional: spc, name
-  initHero(heroObject, heroClass, spc, name): void {
+  initHero(heroObject: Hero, heroClass: HeroClass, spc, name: string): void {
     if(name)
     {
       heroObject.name = name;
@@ -118,7 +118,7 @@ export class HeroService {
     var healthMultiplier: number;
     var fatigueMultiplier: number;
     var arcanaMultiplier: number;
-    var stats: Stats = { health: 0, fatigue: 0, arcana: 0 };
+    var stats: Stats = { health: 0, fatigue: 0, arcana: 0, exp: 0 };
 
     // TODO: Refactor
     // Difficulty details should be stored as data and imported but will be hardcoded for now.
@@ -172,17 +172,19 @@ export class HeroService {
     stats.health = -this.getRandomInt(healthMultiplier);
     stats.fatigue = fatigueMultiplier;
     stats.arcana = -this.getRandomInt(arcanaMultiplier);
+    stats.exp = this.getRandomInt(difficulty*5) + 1;
     this.addStats(id, stats);
     
     return stats;
   }
 
   // Add stats based on parameters and returns the values of [Health, Fatigue, Arcana]
-  addStats(id: number, stats: Stats): void { //TODO: Add EXP
+  addStats(id: number, stats: Stats): void {
     // TODO: Refactor?
     HEROES[id].curHealth += stats.health;
     HEROES[id].curFatigue += stats.fatigue;
     HEROES[id].curArcana += stats.arcana;
+    HEROES[id].curExp += stats.exp;
 
     // Ensure stats are within valid range
     if(HEROES[id].curHealth > HEROES[id].maxHealth)
@@ -203,8 +205,19 @@ export class HeroService {
     if(HEROES[id].curArcana < 0)
       HEROES[id].curArcana = 0;
     
+    if(HEROES[id].curExp > HEROES[id].maxExp)
+      this.levelUp(HEROES[id]);
+
     this.calcStatus(HEROES[id]);
 
+  }
+
+  // Hero level-up with HeroObject as required parameter.
+  levelUp(heroObject: Hero): boolean {
+    heroObject.level++;
+    heroObject.curExp = 0;
+    heroObject.maxExp *= 1.2; // Hardcode maxExp multiplier to 1.2
+    return true;
   }
   
   // TODO: Implement selectClass()
