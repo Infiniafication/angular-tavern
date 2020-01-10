@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { TavernService } from './tavern.service';
 import { HeroService } from './hero.service';
 
@@ -9,16 +9,18 @@ export class DayService {
   constructor( 
     private tavernService: TavernService,
     private heroService: HeroService,
-  ) { this.day = 1; }
+  ) { }
   
-  day: number;
+  // day: number;
+  day = new BehaviorSubject(1);
 
-  getDay(): Observable<number> {
-    return of(this.day);
+  getDay(): BehaviorSubject<number> {
+    return this.day;
   }
 
   incrementDay(): void {
-    this.day++;
+    var num: number = this.day.value;
+    this.day.next(++num);
   }
 
   endDay() {
