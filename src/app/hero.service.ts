@@ -87,7 +87,7 @@ export class HeroService {
     heroObject.maxHealth = heroClass.health;
     heroObject.maxArcana = heroClass.arcana;
     heroObject.maxFatigue = heroClass.fatigue;
-    heroObject.maxExp = 10;
+    heroObject.maxExp = 30;
     heroObject.curHealth = heroClass.health;
     heroObject.curArcana = heroClass.arcana;
     heroObject.curFatigue = 0;
@@ -170,7 +170,7 @@ export class HeroService {
     }
 
     stats.health = -this.getRandomInt(healthMultiplier);
-    stats.fatigue = fatigueMultiplier;
+    stats.fatigue = this.getRandomInt(fatigueMultiplier);
     stats.arcana = -this.getRandomInt(arcanaMultiplier);
     stats.exp = this.getRandomInt(difficulty*5) + 1;
     this.addStats(id, stats);
@@ -205,7 +205,7 @@ export class HeroService {
     if(HEROES[id].curArcana < 0)
       HEROES[id].curArcana = 0;
     
-    if(HEROES[id].curExp > HEROES[id].maxExp)
+    if(HEROES[id].curExp >= HEROES[id].maxExp)
       this.levelUp(HEROES[id]);
 
     this.calcStatus(HEROES[id]);
@@ -225,7 +225,7 @@ export class HeroService {
         heroObject.maxFatigue = Math.ceil(heroObject.maxFatigue * heroClass.fatigueMultiplier);
         heroObject.maxArcana = Math.ceil(heroObject.maxArcana * heroClass.arcanaMultiplier);
         heroObject.curHealth = heroObject.maxHealth;
-        heroObject.curFatigue = heroObject.maxFatigue;
+        heroObject.curFatigue = 0;
         heroObject.curArcana = heroObject.maxArcana;
 
         this.messageService.add('Congratulations, ' + heroObject.name + ' has leveled up to Level ' + heroObject.level + '!');
@@ -234,6 +234,17 @@ export class HeroService {
     }
 
     return false;
+  }
+
+  // Health recovers up to 50% of Max Health
+  // Fatigue recovers up to 80% of Max Fatigue
+  // Arcana recovers to maximum
+  recuperateParty(): void {
+    var stats: Stats = { health: 0, fatigue: 0, arcana: 0, exp: 0 };
+    for(let hero of HEROES)
+    {
+      this.addStats((hero.id-1), {health: Math.ceil(0.5 * hero.maxHealth), fatigue: -Math.ceil(0.8 * hero.maxFatigue), arcana: hero.maxArcana, exp: 0 } );
+    }
   }
   
   // TODO: Implement selectClass()
