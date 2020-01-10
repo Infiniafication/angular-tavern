@@ -118,6 +118,7 @@ export class HeroService {
     var healthMultiplier: number;
     var fatigueMultiplier: number;
     var arcanaMultiplier: number;
+    var expMultiplier: number;
     var stats: Stats = { health: 0, fatigue: 0, arcana: 0, exp: 0 };
 
     // TODO: Refactor
@@ -137,6 +138,7 @@ export class HeroService {
         fatigueMultiplier = 25;
         arcanaMultiplier = 0;
       }
+      expMultiplier = 1;
     }
     else if(difficulty > 2 && difficulty <= 5) // average difficulty
     {
@@ -152,6 +154,7 @@ export class HeroService {
         fatigueMultiplier = 30;
         arcanaMultiplier = 0;
       }
+      expMultiplier = 0.5;
     }
     else if(difficulty >=5) // hard difficulty
     {
@@ -167,12 +170,17 @@ export class HeroService {
         fatigueMultiplier = 55;
         arcanaMultiplier = 0;
       }
+      expMultiplier = 0.3;
     }
+
 
     stats.health = -this.getRandomInt(healthMultiplier);
     stats.fatigue = this.getRandomInt(fatigueMultiplier);
     stats.arcana = -this.getRandomInt(arcanaMultiplier);
-    stats.exp = this.getRandomInt(difficulty*5) + 1;
+
+    var randomExp: number = this.getRandomInt(difficulty*5) + 1;
+    stats.exp = randomExp > (expMultiplier * HEROES[id].maxExp) ? (expMultiplier * HEROES[id].maxExp) : randomExp;
+    
     this.addStats(id, stats);
     
     return stats;
