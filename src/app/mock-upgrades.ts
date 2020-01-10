@@ -1,0 +1,58 @@
+import { Upgrade } from './upgrade';
+
+export const UPGRADES: Upgrade[] = [
+  { 
+    id: 1, 
+    name: "Improved tables and chairs",
+    description: "Improve the tables and chairs in the tavern. Slightly increases popularity.",
+    popularity: 1,
+    wealth: 0,
+    goldCost: 10,
+    obtained: false,
+  },
+  {
+    id: 2, 
+    name: "Oven",
+    description: "The oven allows for better food variety. Slightly increases popularity and patron wealth.",
+    popularity: 1,
+    wealth: 2,
+    goldCost: 25,
+    obtained: false,
+  },
+  { 
+    id: 3, 
+    name: "Road Signs",
+    description: "Having new road signs will guide travelers to the tavern. Decently increases popularity.",
+    popularity: 2,
+    wealth: 0,
+    goldCost: 20,
+    obtained: false,
+  },
+  { 
+    id: 4, 
+    name: "Horse Stable",
+    description: "The horse stable will attract wealthier travelers. Decently increases popularity and patron wealth.",
+    popularity: 2,
+    wealth: 4,
+    goldCost: 45,
+    obtained: false,
+  },
+  { 
+    id: 5, 
+    name: "Bedrooms",
+    description: "Having bedrooms allows travelers to rest for the day. Greatly increases popularity and slightly increases patron wealth.",
+    popularity: 4,
+    wealth: 2,
+    goldCost: 50,
+    obtained: false,
+  },
+  { 
+    id: 6, 
+    name: "Bathhouse",
+    description: "The bathhouse allows travelers to freshen up. Vastly increases popularity and patron wealth.",
+    popularity: 6,
+    wealth: 8,
+    goldCost: 100,
+    obtained: false,
+  },
+];
