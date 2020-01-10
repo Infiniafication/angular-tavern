@@ -47,7 +47,7 @@ export class HuntService {
         this.partyStats.push(this.heroService.battle(counter, AREAS[idArea].actionpoints));
       }
       
-      this.foodReward = this.getRandomInt(AREAS[idArea].actionpoints * 2) // Assuming food is 2x the AP cost
+      this.foodReward = this.getRandomInt(AREAS[idArea].actionpoints * 4) // Assuming food is 4x the AP cost
       this.tavernService.addFood(this.foodReward); // Food Reward
     }
 

@@ -18,7 +18,7 @@ export class TavernService {
     return of(TAVERNSTATS);
   }
 
-  getUpgrades(): Observable<Upgrade> {
+  getUpgrades(): Observable<Upgrade[]> {
     return of(UPGRADES);
   }
   
@@ -78,7 +78,7 @@ export class TavernService {
         {
           this.addGold(-UPGRADES[id].goldCost);
           this.addPopularity(UPGRADES[id].popularity);
-          this.addPopularity(UPGRADES[id].wealth);
+          this.addPatronWealth(UPGRADES[id].wealth);
           UPGRADES[id].obtained = true;
 
           this.calculateIncome();

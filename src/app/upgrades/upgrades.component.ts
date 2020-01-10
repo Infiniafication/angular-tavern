@@ -27,7 +27,7 @@ export class UpgradesComponent implements OnInit {
       this.purchaseUpgrade();
   }
 
-  upgrades: Upgrade;
+  upgrades: Upgrade[];
   tavern: Tavern;
   id: number;
 
