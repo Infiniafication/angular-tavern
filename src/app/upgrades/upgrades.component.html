@@ -1,6 +1,32 @@
-<p>
-This function is not developed yet.
-</p>
-<p>
-Some upgrades will be shown here.
-</p>
+<div class="container-fluid card">
+  <div class="row card-header">
+    <h4>Tavern Upgrades</h4>
+  </div>
+
+  <!-- List all upgrades -->
+  <div *ngFor="let upgrade of upgrades">
+    <div class="card-body card-text">
+      <div class="row">
+        <div class="col">
+          <h5 class="card-title">{{upgrade.name}}</h5>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p class="card-text">{{upgrade.description}}</p>
+          <h6 class="card-subtitle mb-2 text-primary">Cost: {{upgrade.goldCost}} Gold</h6>
+        </div>
+      </div>
+      <div class="row pt-2">
+        <div class="col">
+          <a href="#" class="btn btn-primary" *ngIf="(!upgrade.obtained) && (tavern.gold >= upgrade.goldCost)" routerLink="/upgrade/{{upgrade.id}}">Purchase</a>
+          <a href="#" class="btn btn-danger disabled" *ngIf="(!upgrade.obtained) && (tavern.gold < upgrade.goldCost)">Insufficient Gold</a>
+          <a href="#" class="btn btn-success disabled" *ngIf="upgrade.obtained">Owned</a>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+
+</div> 

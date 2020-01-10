@@ -29,6 +29,7 @@ import { DayService } from './day.service';
       { path: 'hunt', component: HuntAreaComponent },
       { path: 'hunt/:id', component: HuntDetailsComponent },
       { path: 'upgrade', component: UpgradesComponent },
+      { path: 'upgrade/:id', component: UpgradesComponent },
       { path: 'end', component: DayEndComponent },
     ])
   ],

@@ -1,47 +1,47 @@
-  <div class="container-fluid card">
-    <div class="row card-header">
-      <h4>Party Info</h4>
-    </div>
+<div class="container-fluid card">
+  <div class="row card-header">
+    <h4>Party Info</h4>
+  </div>
 
-    <!-- List all initialized hero information -->
-    <div *ngFor="let hero of heroes">
-      <div class="card-body card-text" *ngIf="hero.level > 0">
-        <div class="row row-cols-3"> 
-          <div class="col">
-            Name: {{hero.name}}
-          </div>
-          <div class="col">
-            Level: {{hero.level}}
-          </div>
-          <div class="col">
-            EXP: {{hero.curExp}} / {{hero.maxExp}}
-          </div>
+  <!-- List all initialized hero information -->
+  <div *ngFor="let hero of heroes">
+    <div class="card-body card-text" *ngIf="hero.level > 0">
+      <div class="row row-cols-3"> 
+        <div class="col">
+          Name: {{hero.name}}
         </div>
-        <div class="row row-cols-3"> 
-          <div class="col">
-            Status: {{hero.status}}
-          </div>
-          <div class="col" >
-            <div *ngIf="hero.level > 0">  Class: {{hero.heroClass}} </div>
-            <!-- TODO: Implement Select Class -->
-            <!-- <button *ngIf="hero.level == 0" (click)="selectClass()"> Select Class </button> -->
-          </div>
-          <div class="col">
-            Specialization: {{hero.spc}}
-          </div>
+        <div class="col">
+          Level: {{hero.level}}
         </div>
-        <div class="row row-cols-3"> 
-          <div class="col">
-            Health: {{hero.curHealth}} / {{hero.maxHealth}}
-          </div>
-          <div class="col">
-            Fatigue: {{hero.curFatigue}} / {{hero.maxFatigue}}
-          </div>
-          <div class="col">
-            Arcana: {{hero.curArcana}} / {{hero.maxArcana}}
-          </div>
+        <div class="col">
+          EXP: {{hero.curExp}} / {{hero.maxExp}}
+        </div>
+      </div>
+      <div class="row row-cols-3"> 
+        <div class="col">
+          Status: {{hero.status}}
+        </div>
+        <div class="col" >
+          <div *ngIf="hero.level > 0">  Class: {{hero.heroClass}} </div>
+          <!-- TODO: Implement Select Class -->
+          <!-- <button *ngIf="hero.level == 0" (click)="selectClass()"> Select Class </button> -->
+        </div>
+        <div class="col">
+          Specialization: {{hero.spc}}
+        </div>
+      </div>
+      <div class="row row-cols-3"> 
+        <div class="col">
+          Health: {{hero.curHealth}} / {{hero.maxHealth}}
+        </div>
+        <div class="col">
+          Fatigue: {{hero.curFatigue}} / {{hero.maxFatigue}}
+        </div>
+        <div class="col">
+          Arcana: {{hero.curArcana}} / {{hero.maxArcana}}
         </div>
       </div>
     </div>
+  </div>
 
-  </div> 
+</div> 
