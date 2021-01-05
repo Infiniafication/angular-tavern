@@ -1,6 +1,6 @@
-# angular-hfquxc
+# angular-tavern
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-hfquxc)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-isaac-tavern)
 
 ----------------------------------------------
 Dev Notes (to be removed later!)
